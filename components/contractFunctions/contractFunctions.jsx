@@ -166,7 +166,7 @@ const ContractFunctions = () => {
     e.preventDefault();
     await removeWhiteListedAddress({
       onSuccess: (tx) => {
-        handleSuccess(tx, "Address whitelisted successfully");
+        handleSuccess(tx, "Address removed from been whitelisted");
         updateUI();
       },
       onError: (error) => {

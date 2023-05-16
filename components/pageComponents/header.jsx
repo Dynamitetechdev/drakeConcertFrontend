@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <div className="header">
       <header>
-        <div className="header-main px-4 md:py-5 text-white flex justify-between bg-color-100 items-center">
+        <div className="header-main px-4 md:py-5 text-white flex justify-between bg-color-100 items-center md:absolute md:w-full">
           <Link href="/">
             <h1 className="font-extrabold">ConcertContract</h1>
           </Link>

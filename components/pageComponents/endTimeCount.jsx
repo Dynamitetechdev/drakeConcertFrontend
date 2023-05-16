@@ -26,7 +26,7 @@ const Endtime = () => {
           return;
         }
 
-        const days = Math.floor(remainingTime / (24 * 60 * t60));
+        const days = Math.floor(remainingTime / (24 * 60 * 60));
         const hours = Math.floor((remainingTime % (24 * 60 * 60)) / (60 * 60));
         const minutes = Math.floor((remainingTime % (60 * 60)) / 60);
         const seconds = remainingTime % 60;
@@ -45,9 +45,12 @@ const Endtime = () => {
 
   return (
     <div className="timer">
-      <h1>
-        End Time:
-        {`${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`}
+      <h1 className=" md:text-3xl font-bold">
+        <span className="text-sm font-light ">Sale ExpiresIn: </span> <br />
+        {days} <span className="text-sm font-light">days</span> : {hours}{" "}
+        <span className="text-sm font-light">hours</span> : {minutes}{" "}
+        <span className="text-sm font-light">minutes</span> : {seconds}
+        <span className="text-sm font-light">seconds</span>
       </h1>
     </div>
   );

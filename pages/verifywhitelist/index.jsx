@@ -18,43 +18,41 @@ const Documents = () => {
     <>
       <ConnectMessage />
 
-      <div className="allDocuments">
-        <h1>Verify Address</h1>
-        <form className="forms" onSubmit={handleVerifyWhitelist}>
-          <h1>Add whitelisted</h1>
-          <div className="mb-6">
-            <label
-              for="email"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Your email
-            </label>
-            <input
-              type="text"
-              id="base-input"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-              placeholder="0xad2ew...."
-              value={verifyWhitelist}
-              onChange={(e) => setVerifyWhitelist(e.target.value)}
-              required
-            />
-            <p>{verifyStatus}</p>
-          </div>
-          <button
-            type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            onClick={handleVerifyWhitelist}
-          >
-            Whitelist Address
-          </button>
+      <div className="home_page h-screen h-screen w-full py-16  pb-32 md:py-24 px-5">
+        <div className="inner h-full rounded-lg flex flex-col text-white text-center">
+          <div className="content flex flex-col mb-16 p-3 md:p-20">
+            <h1 className="font-bold text-2xl my-3">Verify Address</h1>
+            <p className="text-sm">Check if your address whitelisted</p>
+            <form className="forms my-10" onSubmit={handleVerifyWhitelist}>
+              <div className="mb-6">
+                <input
+                  type="text"
+                  id="base-input"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-8/12 p-2.5 mx-auto"
+                  placeholder="0xad2ew...."
+                  value={verifyWhitelist}
+                  onChange={(e) => setVerifyWhitelist(e.target.value)}
+                  required
+                />
+                <p>{verifyStatus}</p>
+              </div>
+              <button
+                type="submit"
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-14 rounded dark"
+                onClick={handleVerifyWhitelist}
+              >
+                Whitelist Address
+              </button>
 
-          <p>
-            Status:{" "}
-            {verifyStatus == true
-              ? "Address is whitelisted"
-              : verifyStatus == false && "Not Whitelisted"}
-          </p>
-        </form>
+              <p className="my-16 text-4xl font-bold">
+                <span className="text-sm font-light">Status:</span> <br />
+                {verifyStatus == true
+                  ? "Address is whitelisted"
+                  : verifyStatus == false && "Not Whitelisted"}
+              </p>
+            </form>
+          </div>
+        </div>
       </div>
     </>
   );
