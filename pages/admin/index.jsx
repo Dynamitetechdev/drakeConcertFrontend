@@ -31,8 +31,8 @@ const Documents = () => {
     <>
       <ConnectMessage />
 
-      <div className="home_page h-screen w-full  py-16 md:py-24 px-5">
-        <div className="inner h-full rounded-lg flex  flex-col text-white text-center">
+      <div className="home_page h-screen w-full  py-16 md:py-24 px-2">
+        <div className="inner h-full rounded-lg flex flex-col text-white text-center">
           <div className="content flex flex-col mb-16 p-3 md:p-20">
             <h1 className="font-bold text-2xl my-3 mb-9">Admin</h1>
             <h1 className="font-bold">
@@ -59,7 +59,7 @@ const Documents = () => {
                 <input
                   type="text"
                   id="base-input"
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full md:w-8/12 mx-auto p-2.5"
                   placeholder="0xad2ew...."
                   value={inputWhitelistAddress}
                   onChange={(e) => setInputWhiteAddress(e.target.value)}
@@ -88,7 +88,7 @@ const Documents = () => {
                 <input
                   type="text"
                   id="base-input"
-                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full md:w-8/12 mx-auto p-2.5 "
                   placeholder="0xad2ew...."
                   value={inputRemoveWhitelistAddress}
                   onChange={(e) => setInputRemoveWhiteAddress(e.target.value)}
@@ -103,11 +103,11 @@ const Documents = () => {
               </button>
             </form>
 
-            <div className="killcontract flex flex-col my-16">
+            <div className="killcontract flex flex-col my-16 md:my-5">
               <p className="mb-2">This will kill the contract</p>
               <button
                 type="submit"
-                className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-14 rounded"
+                className="bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-14 rounded md:w-6/12 mx-auto"
                 onClick={handleKillContract}
               >
                 Kill Contract

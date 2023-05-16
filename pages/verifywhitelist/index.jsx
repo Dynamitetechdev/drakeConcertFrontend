@@ -18,7 +18,7 @@ const Documents = () => {
     <>
       <ConnectMessage />
 
-      <div className="home_page h-screen h-screen w-full py-16  pb-32 md:py-24 px-5">
+      <div className="home_page h-screen h-screen w-full py-16  pb-32 md:py-24 px-2">
         <div className="inner h-full rounded-lg flex flex-col text-white text-center">
           <div className="content flex flex-col mb-16 p-3 md:p-20">
             <h1 className="font-bold text-2xl my-3">Verify Address</h1>
