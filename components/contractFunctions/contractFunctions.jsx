@@ -24,6 +24,11 @@ const ContractFunctions = () => {
   const [whitelistedCount, setWhitelistedCount] = useState("0");
   const [contractOwner, setContractOwner] = useState("0x");
   const [inputWhitelistAddress, setInputWhiteAddress] = useState("");
+  const [inputRemoveWhitelistAddress, setInputRemoveWhiteAddress] =
+    useState("");
+  const [verifyWhitelist, setVerifyWhitelist] = useState(null);
+  const [endTime, setEndtime] = useState("0");
+
   //================== ALL FUNCTIONS ==================//
   /*
   1. getOwnedDocuments()
@@ -71,9 +76,40 @@ const ContractFunctions = () => {
       addresses: [inputWhitelistAddress],
     },
   });
+  const { runContractFunction: removeWhiteListedAddress } = useWeb3Contract({
+    functionName: "removeWhiteListedAddress",
+    abi: ABI,
+    contractAddress: contractAddress,
+    params: {
+      addresses: [inputRemoveWhitelistAddress],
+    },
+  });
+
+  const { runContractFunction: isWhiteListed } = useWeb3Contract({
+    functionName: "isWhiteListed",
+    abi: ABI,
+    contractAddress: contractAddress,
+    params: {
+      _address: verifyWhitelist,
+    },
+  });
+
+  const { runContractFunction: killContract } = useWeb3Contract({
+    functionName: "killContract",
+    abi: ABI,
+    contractAddress: contractAddress,
+    params: {},
+  });
 
   const { runContractFunction: getWhiteListedCount } = useWeb3Contract({
     functionName: "getWhiteListedCount",
+    abi: ABI,
+    contractAddress: contractAddress,
+    params: {},
+  });
+
+  const { runContractFunction: getEndTime } = useWeb3Contract({
+    functionName: "getEndTime",
     abi: ABI,
     contractAddress: contractAddress,
     params: {},
@@ -86,13 +122,59 @@ const ContractFunctions = () => {
     const txbalance = await getContractBalance();
     const txCount = (await getWhiteListedCount()).toString();
     const txContractOwner = (await getContractOwner()).toString();
+
+    const txGetEndTime = (await getEndTime()).toString();
+    localStorage.setItem("endtime", txGetEndTime);
+    console.log("txGetEndTime", txGetEndTime);
     setContractOwner(txContractOwner);
     setPrice(txTicketPrice);
     setBalance(txbalance);
     setWhitelistedCount(txCount);
+    setEndtime(txGetEndTime);
+    console.log("xxxxxx", txGetEndTime);
   };
-  //=================== 2. handleUploadDocument ===============//
+  console.log("shjnfkdjfd", endTime);
+  // ========== handler Fucntions ============= //
 
+  const handleBuyTicket = (e) => {
+    e.preventDefault();
+    buyTicket({
+      onSuccess: (tx) => {
+        handleSuccess(tx, "Congratulations, Ticket purchased🎉");
+        updateUI();
+      },
+      onError: (error) => {
+        handleFailedNotification(error.message);
+      },
+    });
+  };
+
+  const handleWhiteListAddress = async (e) => {
+    e.preventDefault();
+    await whiteListAddress({
+      onSuccess: (tx) => {
+        handleSuccess(tx, "Address whitelisted successfully");
+        updateUI();
+      },
+      onError: (error) => {
+        handleFailedNotification(error.message);
+      },
+    });
+    setInputWhiteAddress("");
+  };
+  const handleRemoveWhiteListAddress = async (e) => {
+    e.preventDefault();
+    await removeWhiteListedAddress({
+      onSuccess: (tx) => {
+        handleSuccess(tx, "Address whitelisted successfully");
+        updateUI();
+      },
+      onError: (error) => {
+        handleFailedNotification(error.message);
+      },
+    });
+    setInputWhiteAddress("");
+  };
   const handleSuccess = async (tx, message) => {
     await tx.wait();
     await handleSuccessNotification(message);
@@ -110,7 +192,7 @@ const ContractFunctions = () => {
       message: successMessage,
       position: "topR",
     });
-    setTransactionStatus("completed");
+    // setTransactionStatus("completed");
   };
 
   //=================== 5. handleFailedNotification ===============//
@@ -129,16 +211,27 @@ const ContractFunctions = () => {
   }, [isWeb3Enabled]);
 
   return {
-    buyTicket,
+    handleBuyTicket,
     whiteListAddress,
     account,
     chainId,
     balance,
     price,
+    endTime,
     whitelistedCount,
     contractOwner,
     inputWhitelistAddress,
     setInputWhiteAddress,
+    removeWhiteListedAddress,
+    inputRemoveWhitelistAddress,
+    setInputRemoveWhiteAddress,
+    verifyWhitelist,
+    setVerifyWhitelist,
+    killContract,
+    isWhiteListed,
+    getEndTime,
+    handleWhiteListAddress,
+    handleRemoveWhiteListAddress,
   };
 };
 

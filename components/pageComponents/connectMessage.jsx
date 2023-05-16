@@ -9,7 +9,7 @@ const ConnectMessage = () => {
           Please Connect Wallet. Available On Sepolia Testnet for now.
         </p>
       ) : null}
-      {account && chainIdHex != 11155111 ? (
+      {account && chainIdHex != 31337 ? (
         <p className="text-center bg-color-200 rounded mx-5 text-white my-3 py-5">
           Please Connect to Sepolia Testnet. Will be Avalable On Mainnet Soon.
           Test Version.
