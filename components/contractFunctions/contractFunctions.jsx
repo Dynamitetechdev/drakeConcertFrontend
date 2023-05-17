@@ -164,16 +164,16 @@ const ContractFunctions = () => {
       },
       onError: (error) => {
         if (
-          error.message.includes("Missing web3 instance, make sure to call")
+          error?.message.includes("Missing web3 instance, make sure to call")
         ) {
           handleFailedNotification(" Please Connect Your Wallet");
         } else if (
-          error.message.includes(
+          error?.message.includes(
             "MetaMask Tx Signature: User denied transaction signature"
           )
         ) {
           handleFailedNotification("User Denied Tx");
-        } else if (error.data.message.includes("reverted")) {
+        } else if (error?.data.message?.includes("reverted")) {
           handleFailedNotification("Address not whitelisted");
         }
       },

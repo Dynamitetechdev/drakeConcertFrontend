@@ -20,7 +20,7 @@ const HomePage = () => {
     <>
       <ConnectMessage />
 
-      <div className="home_page h-screen w-full  py-20 md:py-30  px-2">
+      <div className="home_page w-full  py-20 md:py-30  px-2">
         <div className="inner h-full rounded-lg flex flex-col text-white items-center justify-center">
           <div className="content flex  flex-col items-center my-16 md:mt-36">
             <h1 className=" text-4xl md:text-7xl font-bold">
