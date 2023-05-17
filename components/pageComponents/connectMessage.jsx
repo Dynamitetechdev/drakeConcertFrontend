@@ -6,7 +6,7 @@ const ConnectMessage = () => {
     <div className=" absolute top-16 w-full">
       {!account ? (
         <p className="text-center connectMsg rounded mx-4 md:mx-16 text-white my-3 py-5">
-          Please Connect Wallet. Available On Sepolia Testnet for now.
+          Please Connect Wallet. Available On Mumbai(polygon) Testnet for now.
         </p>
       ) : null}
       {account && chainIdHex != 80001 ? (
