@@ -69,16 +69,13 @@ const ContractFunctions = () => {
     params: {},
   });
 
-  const { runContractFunction: buyTicket, error: buyTicketError } =
-    useWeb3Contract({
-      functionName: "buyTicket",
-      abi: ABI,
-      contractAddress: contractAddress,
-      msgValue: price,
-      params: {},
-    });
-
-  console.log("EORRRR", buyTicketError);
+  const { runContractFunction: buyTicket } = useWeb3Contract({
+    functionName: "buyTicket",
+    abi: ABI,
+    contractAddress: contractAddress,
+    msgValue: price,
+    params: {},
+  });
   const { runContractFunction: getContractBalance } = useWeb3Contract({
     functionName: "getContractBalance",
     abi: ABI,
@@ -175,6 +172,8 @@ const ContractFunctions = () => {
           handleFailedNotification("User Denied Tx");
         } else if (error?.data.message?.includes("reverted")) {
           handleFailedNotification("Address not whitelisted");
+        } else {
+          handleFailedNotification(error?.data.message);
         }
       },
     });

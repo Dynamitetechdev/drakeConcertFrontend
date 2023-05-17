@@ -7,15 +7,6 @@ import Image from "next/image";
 const HomePage = () => {
   const { handleBuyTicket, price } = ContractFunctions();
   const { account } = useMoralis();
-  const buyTicketFunc = async () => {
-    try {
-      console.log("Hellllo");
-      await buyTicket();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <>
       <ConnectMessage />
@@ -28,7 +19,7 @@ const HomePage = () => {
             </h1>
 
             <p className="md:text-2xl font-light my-3">
-              Ticket Fee:{" "}
+              Ticket Fee:
               <span className="text-color-500 font-bold">
                 {price && ethers.utils.formatUnits(price, "ether")} ETH
               </span>
