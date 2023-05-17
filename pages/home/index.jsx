@@ -21,7 +21,7 @@ const HomePage = () => {
             <p className="md:text-2xl font-light my-3">
               Ticket Fee:
               <span className="text-color-500 font-bold">
-                {price && ethers.utils.formatUnits(price, "ether")} ETH
+                {price ? ethers.utils.formatUnits(price, "ether") : "0.2"} ETH
               </span>
             </p>
             <button
