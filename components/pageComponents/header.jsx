@@ -24,14 +24,6 @@ const Header = () => {
       access: "admin",
     },
   ];
-  if (contractOwner && account) {
-    if (contractOwner.toLowerCase() === account.toLowerCase()) {
-      console.log("yess");
-    } else {
-      console.log("no");
-    }
-  }
-
   return (
     <div className="header">
       <header>
