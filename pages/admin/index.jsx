@@ -7,26 +7,18 @@ const Documents = () => {
   const {
     inputWhitelistAddress,
     setInputWhiteAddress,
-    whiteListAddress,
-    removeWhiteListedAddress,
     inputRemoveWhitelistAddress,
     setInputRemoveWhiteAddress,
-    killContract,
+    handleKillContract,
     contractOwner,
     whitelistedCount,
     balance,
     handleWhiteListAddress,
     handleRemoveWhiteListAddress,
+    presaleCount,
+    ticketSaleCount,
   } = ContractFunctions();
   const { account } = useMoralis();
-
-  const handleKillContract = () => {
-    try {
-      killContract();
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
   return contractOwner?.toLowerCase() === account?.toLowerCase() ? (
     <>
       <ConnectMessage />
@@ -47,6 +39,14 @@ const Documents = () => {
             <h1 className="font-bold">
               <span className="text-sm font-light"> Whitelisted Address: </span>
               {whitelistedCount}
+            </h1>
+            <h1 className="font-bold">
+              <span className="text-sm font-light"> Presales Purchased: </span>
+              {presaleCount}
+            </h1>
+            <h1 className="font-bold">
+              <span className="text-sm font-light"> Ticket Purchased: </span>
+              {ticketSaleCount}
             </h1>
             <form className="forms my-12" onSubmit={handleWhiteListAddress}>
               <div className="mb-3">

@@ -11,9 +11,7 @@ const Endtime = () => {
 
   useEffect(() => {
     let countInterval;
-
-    const storedEndTime = localStorage.getItem("endtime");
-    const parsedEndTime = parseInt(storedEndTime);
+    const parsedEndTime = parseInt(endTime);
 
     if (!isNaN(parsedEndTime)) {
       countInterval = setInterval(() => {
@@ -41,7 +39,7 @@ const Endtime = () => {
     return () => {
       clearInterval(countInterval);
     };
-  }, []);
+  }, [endTime]);
 
   return (
     <div className="timer">
